@@ -71,9 +71,40 @@ class SingleLinkedList {
     }
 
     remove(node) {
+        const position = this.getPositionOfNode(node);
+
+        return this.removeAtPosition(position);
     }
 
     removeAtPosition(position) {
+        if (position < 0
+            ||
+            position > this.length
+            ||
+            position === null
+        ) {
+            return null;
+        }
+
+        let removedNode = null;
+
+        if (position === 0) {
+            const currentNode = this.head;
+
+            this.head = currentNode.next;
+
+            removedNode = currentNode;
+        } else {
+            removedNode = this.getNodeAtPosition(position);
+
+            const previousNode = this.getNodeAtPosition(position - 1);
+
+            previousNode.next = removedNode.next;
+        }
+
+        this.length--;
+        
+        return removedNode;
     }
 
     traverse(reverse = false) {
@@ -128,4 +159,7 @@ list.print(list.traverseReverse());
 console.log(list.getPositionOfNode(nodeB));
 console.log(list.getNodeAtPosition(3));
 
+console.log(list.removeAtPosition(1));
+console.log(list.remove(nodeB));
 
+list.print(list.traverse());
