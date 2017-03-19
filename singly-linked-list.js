@@ -7,7 +7,7 @@ class Node {
     
 }
 
-class SingleLinkedList {
+class SinglyLinkedList {
 
     constructor() {
         this.head   = null;
@@ -143,7 +143,7 @@ const nodeC = new Node('C');
 const nodeD = new Node('D');
 const nodeE = new Node('E');
 
-const list = new SingleLinkedList();
+const list = new SinglyLinkedList();
 
 list.add(nodeA)
     .add(nodeB)
